@@ -7,120 +7,137 @@
   <!-- Add Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(to right, #ffecd2, #fcb69f);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      color: #a12c4e;
-      text-align: center;
-      padding: 20px;
-    }
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #a12c4e;
+    text-align: center;
+    padding: 20px;
+  }
 
-.top-image {
-  width: 220px;          /* Bigger size */
-  max-width: 40%;        /* Scales better on mobile */
-  border-radius: 10%;    /* Circular */
-  border: 5px solid #fff; /* White border */
-  margin-bottom: 20px;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.3); /* Slight shadow for depth */
-}
+  /* Add floating confetti background */
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: confettiFloat 8s linear infinite;
+  }
 
+  @keyframes confettiFloat {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
+  }
 
-    /* Elegant title */
-    h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      margin-bottom: 10px;
-      color: #d6336c;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-    }
+  /* Top image bigger with white border */
+  .top-image {
+    width: 220px;
+    max-width: 40%;
+    border-radius: 10%;
+    border: 5px solid #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+  }
 
-    /* Heartfelt message in soft cursive */
-    .message {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(1rem, 4vw, 1.5rem);
-      max-width: 550px;
-      line-height: 1.5;
-      margin: 15px auto;
-      color: #7a2c3a;
-    }
+  /* Elegant title */
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: 10px;
+    color: #d6336c;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  }
 
-    /* Balloons floating */
-    .balloon {
-      position: absolute;
-      bottom: -60px;
-      width: 30px;
-      height: 40px;
-      background: #ff4d6d;
-      border-radius: 50% 50% 50% 50%;
-      animation: floatUp 6s linear infinite;
-    }
+  /* Heartfelt message */
+  .message {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    max-width: 550px;
+    line-height: 1.5;
+    margin: 15px auto;
+    color: #7a2c3a;
+  }
 
-    .balloon::after {
-      content: '';
-      position: absolute;
-      width: 2px;
-      height: 30px;
-      background: #666;
-      left: 50%;
-      bottom: -30px;
-      transform: translateX(-50%);
-    }
+  /* Balloons floating */
+  .balloon {
+    position: absolute;
+    bottom: -60px;
+    width: 30px;
+    height: 40px;
+    background: #ff4d6d;
+    border-radius: 50% 50% 50% 50%;
+    animation: floatUp 6s linear infinite;
+  }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-110vh) scale(0.8); opacity: 0; }
-    }
+  .balloon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    background: #666;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+  }
 
-    /* Pop-up cake */
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      background: rgba(255, 255, 255, 0.95);
-      color: #ff4d6d;
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.5s ease;
-      width: 85%;
-      max-width: 350px;
-      z-index: 1000;
-    }
-    .popup.show {
-      transform: translate(-50%, -50%) scale(1);
-    }
-    .popup img {
-      width: 150px;
-      max-width: 80%;
-    }
-    .popup button {
-      margin-top: 10px;
-      padding: 8px 15px;
-      border: none;
-      background: #ff8a8a;
-      color: white;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .popup button:hover {
-      background: #ff4d6d;
-    }
-  </style>
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-110vh) scale(0.8); opacity: 0; }
+  }
+
+  /* Pop-up cake */
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(255, 255, 255, 0.95);
+    color: #ff4d6d;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease;
+    width: 85%;
+    max-width: 350px;
+    z-index: 1000;
+  }
+  .popup.show {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .popup img {
+    width: 150px;
+    max-width: 80%;
+  }
+  .popup button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    background: #ff8a8a;
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .popup button:hover {
+    background: #ff4d6d;
+  }
+</style>
+
 </head>
 <body>
   <img src="lola.jpg" alt="Lola's Photo" class="top-image">
   <!-- Elegant Title -->
-  <h2>Happy Birthday, Po! 🎂</h2>
+  <h1>Happy Birthday, Po! 🎂</h1>
 
   <!-- Heartfelt Message -->
   <p class="message">
@@ -138,6 +155,27 @@
   </div>
 
   <script>
+    // Floating confetti
+function createConfetti() {
+  const confetti = document.createElement("div");
+  confetti.classList.add("confetti");
+
+  // Random position and color
+  confetti.style.left = Math.random() * 100 + "vw";
+  confetti.style.background = randomConfettiColor();
+  confetti.style.width = confetti.style.height = Math.random() * 6 + 4 + "px"; // 4px to 10px
+  confetti.style.animationDuration = Math.random() * 4 + 4 + "s"; // 4s-8s
+
+  document.body.appendChild(confetti);
+  setTimeout(() => confetti.remove(), 8000);
+}
+
+function randomConfettiColor() {
+  const colors = ["#ff4d6d", "#ffb347", "#7ec8e3", "#77dd77", "#fff176"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+setInterval(createConfetti, 200);
     // Floating balloons
     function createBalloon() {
       const balloon = document.createElement("div");
