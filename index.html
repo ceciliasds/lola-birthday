@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Lola</title>
+  <!-- Add Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -20,23 +22,23 @@
       padding: 20px;
     }
 
+    /* Elegant title */
     h1 {
-      font-size: clamp(2rem, 6vw, 3rem);
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.5rem, 8vw, 4rem);
       margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      color: #d6336c;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
     }
 
-    p {
-      font-size: clamp(1rem, 4vw, 1.3rem);
-      max-width: 500px;
+    /* Heartfelt message in soft cursive */
+    .message {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      max-width: 550px;
       line-height: 1.5;
-      margin: 10px auto;
-    }
-
-    .names {
-      font-weight: bold;
-      color: #ff8a8a;
-      font-size: clamp(1.2rem, 5vw, 1.8rem);
+      margin: 15px auto;
+      color: #7a2c3a;
     }
 
     /* Balloons floating */
@@ -106,16 +108,20 @@
   </style>
 </head>
 <body>
+  <!-- Elegant Title -->
   <h1>Happy Birthday, Po! 🎂</h1>
-  <p><em>English:</em>  
-  <br>I may not always say it, but I am beyond grateful to have you as my lola.  
-  You’ve been like both a mother and father to me, and I’m so lucky to have your love and care.  
-  Thank you for everything — you are truly one of life’s greatest blessings. I love you! </p>
+
+  <!-- Heartfelt Message -->
+  <p class="message">
+    I may not always say it, but I am beyond grateful to have you as my lola.  
+    You’ve been like both a mother and father to me, and I’m so lucky to have your love and care.  
+    Thank you for everything — you are truly one of life’s greatest blessings. I love you!  
+  </p>
 
   <!-- Cake pop-up -->
   <div id="popup" class="popup">
     <h2>SURPRISE! 🎉</h2>
-    <img src="cake.jpg" alt="Birthday Cake">
+    <img src="cake1.png" alt="Birthday Cake">
     <p>Blow out the candles and make a wish! 💖</p>
     <button onclick="closePopup()">Close</button>
   </div>
