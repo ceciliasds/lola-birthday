@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Lola</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      color: #a12c4e;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    p {
+      font-size: clamp(1rem, 4vw, 1.3rem);
+      max-width: 500px;
+      line-height: 1.5;
+      margin: 10px auto;
+    }
+
+    .names {
+      font-weight: bold;
+      color: #ff8a8a;
+      font-size: clamp(1.2rem, 5vw, 1.8rem);
+    }
+
+    /* Balloons floating */
+    .balloon {
+      position: absolute;
+      bottom: -60px;
+      width: 30px;
+      height: 40px;
+      background: #ff4d6d;
+      border-radius: 50% 50% 50% 50%;
+      animation: floatUp 6s linear infinite;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 30px;
+      background: #666;
+      left: 50%;
+      bottom: -30px;
+      transform: translateX(-50%);
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(0.8); opacity: 0; }
+    }
+
+    /* Pop-up cake */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: rgba(255, 255, 255, 0.95);
+      color: #ff4d6d;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.5s ease;
+      width: 85%;
+      max-width: 350px;
+      z-index: 1000;
+    }
+    .popup.show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .popup img {
+      width: 150px;
+      max-width: 80%;
+    }
+    .popup button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      border: none;
+      background: #ff8a8a;
+      color: white;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .popup button:hover {
+      background: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Birthday, Lola! 🎂</h1>
+  <p><span class="names">Mahal na Lola</span>, sobrang saya ko na ikaw ang naging lola ko.  
+  Hindi ko man palaging nasasabi pero napakaswerte ko dahil ikaw ang naging nanay at tatay ko rin.  
+  Salamat sa pagmamahal at pag-aaruga mo — ikaw ang pinakamagandang regalo ng buhay ko.</p>
+
+  <p><em>English:</em>  
+  <br>I may not always say it, but I am beyond grateful to have you as my grandmother.  
+  You’ve been like both a mother and father to me, and I’m so lucky to have your love and care.  
+  Thank you for everything — you are truly one of life’s greatest blessings.</p>
+
+  <!-- Cake pop-up -->
+  <div id="popup" class="popup">
+    <h2>Happy Birthday! 🎉</h2>
+    <img src="cake.png" alt="Birthday Cake">
+    <p>Blow out the candles and make a wish, Lola! 💖</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    // Floating balloons
+    function createBalloon() {
+      const balloon = document.createElement("div");
+      balloon.classList.add("balloon");
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.background = randomColor();
+      balloon.style.animationDuration = Math.random() * 3 + 3 + "s";
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 6000);
+    }
+
+    function randomColor() {
+      const colors = ["#ff4d6d", "#ffb347", "#7ec8e3", "#77dd77", "#ff69b4"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    setInterval(createBalloon, 500);
+
+    // Show pop-up after 5 seconds
+    setTimeout(() => {
+      document.getElementById("popup").classList.add("show");
+    }, 5000);
+
+    function closePopup() {
+      document.getElementById("popup").classList.remove("show");
+    }
+  </script>
+</body>
+</html>
