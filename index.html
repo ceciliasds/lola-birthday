@@ -67,6 +67,23 @@
     color: #7a2c3a;
   }
 
+  /* Show Surprise Button */
+  .show-popup-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background: #ff8a8a;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+
+  .show-popup-btn:hover {
+    background: #ff4d6d;
+  }
+
   /* Balloons floating */
   .balloon {
     position: absolute;
@@ -108,15 +125,15 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease;
     width: 85%;
-    max-width: 350px;
+    max-width: 380px;
     z-index: 1000;
   }
   .popup.show {
     transform: translate(-50%, -50%) scale(1);
   }
   .popup img {
-    width: 150px;
-    max-width: 80%;
+    width: 200px;   /* Bigger cake image */
+    max-width: 90%;
   }
   .popup button {
     margin-top: 10px;
@@ -132,7 +149,6 @@
     background: #ff4d6d;
   }
 </style>
-
 </head>
 <body>
   <img src="lola.jpg" alt="Lola's Photo" class="top-image">
@@ -146,9 +162,12 @@
     Thank you for everything — you are truly one of life’s greatest blessings. I love you!  
   </p>
 
+  <!-- Button to Show Popup -->
+  <button class="show-popup-btn" onclick="showPopup()">Click this!</button>
+
   <!-- Cake pop-up -->
   <div id="popup" class="popup">
-    <h2>SURPRISE! 🎉</h2>
+    <h2>SURPRISE!!! </h2>
     <img src="cake1.png" alt="Birthday Cake">
     <p>Blow out the candles and make a wish! 💖</p>
     <button onclick="closePopup()">Close</button>
@@ -156,26 +175,27 @@
 
   <script>
     // Floating confetti
-function createConfetti() {
-  const confetti = document.createElement("div");
-  confetti.classList.add("confetti");
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
 
-  // Random position and color
-  confetti.style.left = Math.random() * 100 + "vw";
-  confetti.style.background = randomConfettiColor();
-  confetti.style.width = confetti.style.height = Math.random() * 6 + 4 + "px"; // 4px to 10px
-  confetti.style.animationDuration = Math.random() * 4 + 4 + "s"; // 4s-8s
+      // Random position and color
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.background = randomConfettiColor();
+      confetti.style.width = confetti.style.height = Math.random() * 6 + 4 + "px"; // 4px to 10px
+      confetti.style.animationDuration = Math.random() * 4 + 4 + "s"; // 4s-8s
 
-  document.body.appendChild(confetti);
-  setTimeout(() => confetti.remove(), 8000);
-}
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 8000);
+    }
 
-function randomConfettiColor() {
-  const colors = ["#ff4d6d", "#ffb347", "#7ec8e3", "#77dd77", "#fff176"];
-  return colors[Math.floor(Math.random() * colors.length)];
-}
+    function randomConfettiColor() {
+      const colors = ["#ff4d6d", "#ffb347", "#7ec8e3", "#77dd77", "#fff176"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
 
-setInterval(createConfetti, 200);
+    setInterval(createConfetti, 200);
+
     // Floating balloons
     function createBalloon() {
       const balloon = document.createElement("div");
@@ -194,11 +214,12 @@ setInterval(createConfetti, 200);
 
     setInterval(createBalloon, 500);
 
-    // Show pop-up after 5 seconds
-    setTimeout(() => {
+    // Show popup when button is clicked
+    function showPopup() {
       document.getElementById("popup").classList.add("show");
-    }, 5000);
+    }
 
+    // Close popup
     function closePopup() {
       document.getElementById("popup").classList.remove("show");
     }
